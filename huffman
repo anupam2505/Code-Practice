@@ -1,0 +1,23 @@
+def  Decoding( encodings,  encodedstring):
+    length = len(encodings)
+    dictionary = {}
+    for i in range(0,length):
+        n, k = encodings[i].split('\t')
+        #print n
+        dictionary[k]= n;
+    #print dictionary
+    outlist = list()
+    while (len(encodedstring)>0):
+        for k in dictionary.keys():
+            if encodedstring[0:5] in k[0:5]:
+                outlist.append(dictionary[k])
+                length1 = len(k)
+                if len(encodedstring)>0:
+                    encodedstring = encodedstring[length1:]
+                else:
+                    pass
+            else:
+                pass
+    return ''.join(outlist)
+
+

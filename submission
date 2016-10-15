@@ -1,0 +1,52 @@
+#!/usr/bin/python
+
+import sys
+
+print 'Number of arguments:', len(sys.argv), 'arguments.'
+print 'Argument List:', str(sys.argv[1])
+
+def move_right(x,y):
+    return x+1, y
+
+def move_down(x,y):
+    return x,y-1
+
+def move_left(x,y):
+    return x-1,y
+
+def move_up(x,y):
+    return x,y+1
+
+def main(argv):
+    min_col = 0
+    max_col = int(sys.argv[1])-1
+    min_row = 0
+    max_row = int(sys.argv[2])-1
+
+    # Creates a list containing 5 lists initialized to 0
+    Matrix = [[" " for x in range(max_col+1)] for y in range(max_row+1)]
+    while (min_col+1 < max_col and min_row+1 < max_row):
+        for i in range(min_col-1, max_col+1,1):
+            Matrix[min_row][i] = "X"
+        min_row = min_row+2
+
+        #Move downward and print
+        for i in range(min_row-1, max_row+1,1):
+            Matrix[i][max_col] = "X"
+        max_col = max_col-2
+
+        #Move leftwards and print
+        for i in range(max_col+1, min_col-1,-1):
+            Matrix[max_row][i] = "X"
+        max_row = max_row-2
+
+        #Move upwards and print
+        for i in range(max_row+1, min_row-1,-1):
+            Matrix[i][min_col] = "X"
+        min_col = min_col+2
+    return Matrix
+
+if __name__ == "__main__":
+   matrix = main(sys.argv[1:])
+   for x in range(0,int(sys.argv[2])):
+        print matrix[x][:]

@@ -1,0 +1,59 @@
+#!/bin/python
+
+import sys
+
+
+
+
+t = int(raw_input().strip())
+
+def recursive (startnode, endnode, edgeDict, k):
+    if startnode in edgeDict:
+        startlist = edgeDict[startnode]
+        a = list()
+        if len(startlist)==0:
+            return 0
+        else:
+            for i in startlist:
+                a.append(recursive(i, endnode, edgeDict, k))
+            return min(a)
+    else:
+        return 0
+
+
+def checkConnectedNodes(startnode, edgeDict, n):
+    startlist = edgeDict[startnode]
+    print edgeDict
+    outputlist = list()
+    for i in range(1,n+1):
+        if i ==startnode:
+            pass
+        else :
+            if (i in startlist):
+                k = 6
+                outputlist.append(k)
+            else :
+                k =0
+                p = recursive(startnode, i, edgeDict, k)
+                if (p == 0):
+                    k = -1
+                else:
+                    k= p +k
+                outputlist.append(k)
+    print " ".join(str(e) for e in outputlist)
+
+for a0 in xrange(t):
+    edgeDict = {}
+    n,e = raw_input().strip().split(' ')
+    n,e = [int(n),int(e)]
+    for a1 in xrange(e):
+        e1,e2 = raw_input().strip().split(' ')
+        e1,e2 = [int(e1),int(e2)]
+        if e1 in edgeDict.keys():
+            pass
+        else:
+            edgeDict[e1] = list()
+        edgeDict[e1].append(e2)
+    startnode = int(raw_input().strip())
+    checkConnectedNodes(startnode, edgeDict, n)
+

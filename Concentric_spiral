@@ -1,0 +1,53 @@
+#!/usr/bin/python
+
+import sys
+
+#print 'Number of arguments:', len(sys.argv), 'arguments.'
+#print 'Argument List:', str(sys.argv[1])
+
+def move_right(x,y):
+    return x+1, y
+
+def move_down(x,y):
+    return x,y-1
+
+def move_left(x,y):
+    return x-1,y
+
+def move_up(x,y):
+    return x,y+1
+
+
+def spiral_recursive(myarray,x,y):
+    n = len(myarray)-1
+    m = len(myarray[0])
+    if (n >= 3 and m >= 3):
+        while (x<n):
+            myarray[x][y] ='X'
+
+
+
+def spiral(X, Y):
+    x = y = 0
+    dx = 0
+    dy = -1
+    myarray = [[1]* X for j in range(Y)]
+    printspiral(myarray)
+    #spiral_recursive(myarray, 0, 0)
+    # for i in range(max(X, Y)**2):
+    #     if (-X/2 < x <= X/2) and (-Y/2 < y <= Y/2):
+    #         print (x, y)
+    #         # DO STUFF...
+    #     if x == y or (x < 0 and x == -y) or (x > 0 and x == 1-y):
+    #         dx, dy = -dy, dx
+    #     x, y = x+dx, y+dy
+
+def printspiral(myarray):
+    n = range(len(myarray))
+    m = range(len(myarray[0]))
+    for y in n:
+        for x in m:
+            print  myarray[y][x],
+        print
+
+printspiral(spiral(5,3))

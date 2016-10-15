@@ -1,0 +1,6 @@
+str = aaaaabbbbbbbbbfffffssssssppppiu
+
+def compress (str):
+    char_List = list(str)
+    output = list()
+    for

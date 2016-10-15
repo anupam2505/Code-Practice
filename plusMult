@@ -1,0 +1,25 @@
+def plusMult(arr):
+    r_e = arr[0]
+    for i in range(2,len(arr),4):
+        if i+2 < len(arr):
+            r_e = r_e*arr[i]+arr[i+2]
+        else:
+            r_e = r_e*arr[i]
+    print r_e
+    r_e= r_e%2
+
+    r_o = arr[1]
+    for i in range(3,len(arr),4):
+        if i+2 < len(arr):
+            r_o = r_o*arr[i]+arr[i+2]
+        else:
+            r_o = r_o*arr[i]
+    print r_o
+    r_o= r_o%2
+
+    if r_o > r_e:
+        print "ODD"
+    elif r_e > r_o:
+        print "EVEN"
+    else:
+        print "NEUTRAL"

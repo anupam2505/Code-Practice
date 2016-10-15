@@ -1,0 +1,20 @@
+def dec_to_bin(x):
+    return list((bin(x)[2:]))
+
+def  CountBits(n):
+    binaryList = dec_to_bin(n)
+    length = len(binaryList)
+    indexlist = list()
+    count = 0
+    for i in range(0,length):
+        if (binaryList[i]=="1"):
+            count = count +1
+            indexlist.append(i+1)
+    outputlist = list()
+    outputlist.append(count)
+    for i in indexlist:
+        outputlist.append(i)
+    return outputlist
+
+CountBits(161)
+
